@@ -17,7 +17,6 @@ function resize() {
 window.addEventListener("resize", resize);
 resize();
 
-// -------------------------------------------------------------
 // 1. BACKGROUND SPLASH CURSOR (Sizga yoqqan yorqin neon-binafsha ko'rinishi)
 // -------------------------------------------------------------
 class FluidParticle {
@@ -91,8 +90,6 @@ window.addEventListener("touchmove", (e) => {
     handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
   }
 });
-
-// -------------------------------------------------------------
 // 2. HARFLAR VA SHARLAR (Tebranishsiz, mukammal joylashuv)
 // -------------------------------------------------------------
 function Letter(char, x, y, delay) {
