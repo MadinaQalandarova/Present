@@ -6,14 +6,14 @@
 
 html,
 body {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   font-family: "Georgia", serif;
 }
 
 body {
-  transition: background-color 1s ease;
+  transition: background-color 0.8s ease;
 }
 
 body.bg-dark {
@@ -22,7 +22,7 @@ body.bg-dark {
 }
 
 body.bg-red {
-  background-color: #b7094c;
+  background-color: #a40e3a;
   color: #ffffff;
 }
 
@@ -31,6 +31,7 @@ body.bg-pink {
   color: #590d22;
 }
 
+/* HAR BIR BOSQICH BUTUN EKRANNI EGALLAYDI */
 .stage {
   position: absolute;
   top: 0;
@@ -41,7 +42,7 @@ body.bg-pink {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 20px;
+  padding: 50px 20px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -52,7 +53,7 @@ body.bg-pink {
   pointer-events: auto;
 }
 
-/* Sarlavha */
+/* SARLAVHA */
 .subtitle {
   font-size: 22px;
   font-style: italic;
@@ -60,43 +61,34 @@ body.bg-pink {
   margin-top: 10px;
 }
 
-/* YURAKNI EKRAN MARKAZIGA TEKISLASH */
-.heart-container {
+/* YURAKNI EKRAN MARKAZIGA ANIQ TEKISLASH */
+.heart-wrapper {
   position: absolute;
-  top: 45%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.main-heart {
-  width: 130px;
-  height: 130px;
-  background: radial-gradient(
-    circle at 35% 35%,
-    #ff758f 0%,
-    #ff0054 70%,
-    #9e0031 100%
-  );
-  clip-path: path(
-    "M 12,21.35 C 5.4,15.36 2,12.28 2,8.5 C 2,5.42 4.42,3 7.5,3 C 9.24,3 10.91,3.81 12,5.09 C 13.09,3.81 14.76,3 16.5,3 C 19.58,3 22,5.42 22,8.5 C 22,12.28 18.6,15.36 12,21.35 Z"
-  );
-  transform: scale(5);
-  filter: drop-shadow(0 0 40px rgba(255, 0, 84, 0.85));
+.main-heart-svg {
+  width: 100%;
+  height: 100%;
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
 }
 
-/* KAMON KO'RINISHI */
-.bow-area {
+/* KAMON KO'RINISHI VA JOYLASHUVI */
+.bow-wrapper {
   position: absolute;
-  bottom: 60px;
-  left: 5%;
-  width: 160px;
-  height: 160px;
+  bottom: 80px;
+  left: 8%;
+  width: 140px;
+  height: 140px;
   cursor: pointer;
   z-index: 10;
 }
@@ -104,7 +96,7 @@ body.bg-pink {
 .bow-svg {
   width: 100%;
   height: 100%;
-  transform: rotate(-35deg);
+  transform: rotate(-30deg);
 }
 
 .instruction {
@@ -112,39 +104,35 @@ body.bg-pink {
   letter-spacing: 4px;
   opacity: 0.6;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-/* ZARRALAR */
-.heart-particle {
+/* ZARRALAR (PORTLASH EFFEKTI) */
+.particle {
   position: absolute;
   width: 18px;
   height: 18px;
-  background: #ff4d6d;
-  clip-path: path(
-    "M 12,21.35 C 5.4,15.36 2,12.28 2,8.5 C 2,5.42 4.42,3 7.5,3 C 9.24,3 10.91,3.81 12,5.09 C 13.09,3.81 14.76,3 16.5,3 C 19.58,3 22,5.42 22,8.5 C 22,12.28 18.6,15.36 12,21.35 Z"
-  );
   pointer-events: none;
   transition:
     transform 0.8s cubic-bezier(0.1, 0.8, 0.3, 1),
     opacity 0.8s ease;
 }
 
-/* 2-BOSQICH */
+/* 2-BOSQICH MATNLARI */
 #stage-2 {
   justify-content: center;
   text-align: center;
 }
 
 .wish-label {
-  font-size: 24px;
+  font-size: 26px;
   font-style: italic;
   margin-bottom: 20px;
   opacity: 0.9;
 }
 
 .big-title {
-  font-size: 80px;
+  font-size: 82px;
   line-height: 1.05;
   font-weight: bold;
 }
@@ -155,14 +143,14 @@ body.bg-pink {
   opacity: 0.9;
 }
 
-/* 3-BOSQICH */
+/* 3-BOSQICH (DARAXT) */
 #stage-3 {
   justify-content: space-between;
 }
 
 .tree-wrapper {
   width: 100%;
-  max-width: 450px;
+  max-width: 420px;
   height: 420px;
   display: flex;
   justify-content: center;
@@ -181,7 +169,7 @@ body.bg-pink {
 }
 
 .final-caption h2 {
-  font-size: 48px;
+  font-size: 52px;
   color: #800f2f;
   margin: 8px 0;
 }

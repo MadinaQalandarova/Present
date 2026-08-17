@@ -7,44 +7,64 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body id="app-body" class="bg-dark">
-    <!-- 1-BOSQICH: Kamon va Neon Yurak -->
+    <!-- 1-BOSQICH: Kamon va Yurak -->
     <section id="stage-1" class="stage active">
       <div class="subtitle">a little something, for you</div>
 
-      <!-- Qoq markazdagi KATTA YURAK -->
-      <div class="heart-container">
-        <div class="main-heart" id="mainHeart"></div>
+      <!-- EKRAN MARKAZIDAGI YURAK -->
+      <div class="heart-wrapper">
+        <svg viewBox="0 0 100 100" class="main-heart-svg" id="mainHeart">
+          <defs>
+            <radialGradient id="heartGrad" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#ff8fa3" />
+              <stop offset="60%" stop-color="#ff0054" />
+              <stop offset="100%" stop-color="#800f2f" />
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <path
+            d="M 50,88 C 20,60 5,40 5,25 C 5,12 15,5 27,5 C 36,5 45,10 50,18 C 55,10 64,5 73,5 C 85,5 95,12 95,25 C 95,40 80,60 50,88 Z"
+            fill="url(#heartGrad)"
+            filter="url(#glow)"
+          />
+        </svg>
       </div>
 
-      <!-- Pastki chap burchakdagi KAMON -->
-      <div class="bow-area" id="bowArea">
-        <svg viewBox="0 0 120 120" class="bow-svg">
+      <!-- PASTKI CHAP BURCHAKDAGI KAMON -->
+      <div class="bow-wrapper" id="bowWrapper">
+        <svg viewBox="0 0 100 100" class="bow-svg">
           <path
-            d="M 30,15 Q 80,60 30,105"
+            d="M 25,15 Q 70,50 25,85"
             fill="none"
             stroke="#ffffff"
-            stroke-width="5"
+            stroke-width="4"
             stroke-linecap="round"
           />
           <line
-            x1="30"
+            x1="25"
             y1="15"
-            x2="30"
-            y2="105"
-            stroke="#aaaaaa"
-            stroke-width="2"
+            x2="25"
+            y2="85"
+            stroke="#cccccc"
+            stroke-width="1.5"
           />
           <g id="arrowGroup">
             <line
-              x1="15"
-              y1="60"
-              x2="80"
-              y2="60"
+              x1="10"
+              y1="50"
+              x2="60"
+              y2="50"
               stroke="#ff4d6d"
-              stroke-width="4"
+              stroke-width="3"
               stroke-linecap="round"
             />
-            <polygon points="80,52 95,60 80,68" fill="#ff4d6d" />
+            <polygon points="60,45 72,50 60,55" fill="#ff4d6d" />
           </g>
         </svg>
       </div>
@@ -52,23 +72,23 @@
       <div class="instruction">PULL & RELEASE</div>
     </section>
 
-    <!-- 2-BOSQICH: Qizil Fon va Matn -->
+    <!-- 2-BOSQICH: Qizil Fon va Matn (5 sekund) -->
     <section id="stage-2" class="stage">
       <div class="wish-label">make a wish...</div>
       <h1 class="big-title">Happy<br />Birthday</h1>
       <div class="wish-sub">to someone worth celebrating</div>
     </section>
 
-    <!-- 3-BOSQICH: Pushti Fon va Yurakli Daraxt -->
+    <!-- 3-BOSQICH: Pushti Fon va Daraxt -->
     <section id="stage-3" class="stage">
       <div class="tree-wrapper">
-        <svg viewBox="0 0 300 350" class="tree-svg">
+        <svg viewBox="0 0 300 320" class="tree-svg">
           <g stroke="#3a1c0d" stroke-linecap="round" fill="none">
-            <path d="M 150,330 C 145,240 155,180 150,140" stroke-width="10" />
-            <path d="M 150,210 C 130,180 100,160 70,140" stroke-width="6" />
-            <path d="M 150,200 C 170,170 200,150 230,135" stroke-width="6" />
-            <path d="M 150,160 C 135,130 110,110 95,90" stroke-width="4" />
-            <path d="M 150,150 C 165,120 185,100 205,85" stroke-width="4" />
+            <path d="M 150,310 C 145,230 155,170 150,130" stroke-width="8" />
+            <path d="M 150,190 C 130,160 100,140 70,125" stroke-width="5" />
+            <path d="M 150,180 C 170,150 200,130 230,115" stroke-width="5" />
+            <path d="M 150,150 C 135,120 115,100 95,85" stroke-width="3" />
+            <path d="M 150,140 C 165,110 185,90 205,75" stroke-width="3" />
           </g>
           <g id="treeLeaves"></g>
         </svg>
