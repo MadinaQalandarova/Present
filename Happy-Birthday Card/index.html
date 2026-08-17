@@ -1,72 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uz">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Birthday Scene</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body id="app-body" class="bg-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Birthday Scene</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="app-body" class="bg-dark">
+    <!-- 1-BOSQICH: Yurakcha yog'ilishi va Kamon -->
+    <section id="stage-1" class="stage active">
+      <div class="subtitle">a little something, for you</div>
 
-  <!-- 1-BOSQICH: Yurak va Kamon -->
-  <section id="stage-1" class="stage active">
-    <div class="subtitle">a little something, for you</div>
-    
-    <!-- 1-RASMDAGI KICHIK YURAKCHALARDAN TASHKIL TOPGAN KATTA YURAK -->
-    <div class="heart-composite" id="mainHeart">
-      <div class="composite-inner" id="compositeInner"></div>
-    </div>
+      <!-- YURAKLAR BIRLASHADIGAN MAYDON -->
+      <div class="heart-assembly-area" id="mainHeart">
+        <div id="assemblyContainer"></div>
+      </div>
 
-    <!-- KAMON VA O'Q -->
-    <div class="bow-wrapper" id="bowWrapper">
-      <svg viewBox="0 0 100 100" class="bow-svg">
-        <path d="M 25,15 Q 70,50 25,85" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-        <line x1="25" y1="15" x2="25" y2="85" stroke="#cccccc" stroke-width="1.5"/>
-        <g id="arrowGroup">
-          <line x1="10" y1="50" x2="60" y2="50" stroke="#ff4d6d" stroke-width="3" stroke-linecap="round"/>
-          <polygon points="60,45 72,50 60,55" fill="#ff4d6d"/>
-        </g>
-      </svg>
-    </div>
+      <!-- KAMON VA O'Q -->
+      <div class="bow-wrapper" id="bowWrapper">
+        <svg viewBox="0 0 100 100" class="bow-svg">
+          <path
+            d="M 25,15 Q 70,50 25,85"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <line
+            x1="25"
+            y1="15"
+            x2="25"
+            y2="85"
+            stroke="#cccccc"
+            stroke-width="1.5"
+          />
+          <g id="arrowGroup">
+            <line
+              x1="10"
+              y1="50"
+              x2="60"
+              y2="50"
+              stroke="#ff4d6d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <polygon points="60,45 72,50 60,55" fill="#ff4d6d" />
+          </g>
+        </svg>
+      </div>
 
-    <div class="instruction">PULL & RELEASE</div>
-  </section>
+      <div class="instruction">PULL & RELEASE</div>
+    </section>
 
-  <!-- 2-BOSQICH: Qizil Fon va Matn -->
-  <section id="stage-2" class="stage">
-    <div class="wish-label">make a wish...</div>
-    <h1 class="big-title">Happy<br>Birthday</h1>
-    <div class="wish-sub">to someone worth celebrating</div>
-  </section>
+    <!-- 2-BOSQICH: Qizil Fon va Matn (5 sekund) -->
+    <section id="stage-2" class="stage">
+      <div class="wish-label">make a wish...</div>
+      <h1 class="big-title">Happy<br />Birthday</h1>
+      <div class="wish-sub">to someone worth celebrating</div>
+    </section>
 
-  <!-- 3-BOSQICH: 2-RASMDAGI YURAKLI DARAXT -->
-  <section id="stage-3" class="stage">
-    <div class="tree-wrapper">
-      <svg viewBox="0 0 400 450" class="tree-svg">
-        <!-- Daraxt shoxlari -->
-        <g stroke="#4a2511" stroke-linecap="round" fill="none">
-          <path d="M 200,430 C 190,320 210,240 200,180" stroke-width="14"/>
-          <!-- Chap shoxlar -->
-          <path d="M 200,280 C 170,240 120,220 70,190" stroke-width="8"/>
-          <path d="M 175,240 C 140,200 100,170 60,130" stroke-width="6"/>
-          <path d="M 195,200 C 170,160 130,120 90,80" stroke-width="4"/>
-          <!-- O'ng shoxlar -->
-          <path d="M 200,280 C 230,240 280,220 330,190" stroke-width="8"/>
-          <path d="M 225,240 C 260,200 300,170 340,130" stroke-width="6"/>
-          <path d="M 205,200 C 230,160 270,120 310,80" stroke-width="4"/>
-        </g>
-        <!-- Shoxlardagi va yerdagi yurak barglar -->
-        <g id="treeLeaves"></g>
-      </svg>
-    </div>
+    <!-- 3-BOSQICH: TAYYOR RASMDAGI YURAKLI DARAXT -->
+    <section id="stage-3" class="stage tree-stage">
+      <div class="tree-image-container">
+        <img src="tree.png" alt="Heart Tree" class="tree-img" />
+      </div>
 
-    <div class="final-caption">
-      <p class="small-text">and... make it count</p>
-      <h2>Happy Birthday</h2>
-      <p class="small-text">here's to a year that blooms</p>
-    </div>
-  </section>
+      <div class="final-caption">
+        <p class="small-text">and... make it count</p>
+        <h2>Happy Birthday</h2>
+        <p class="small-text">here's to a year that blooms</p>
+      </div>
+    </section>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
