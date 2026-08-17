@@ -27,11 +27,10 @@ body.bg-red {
 }
 
 body.bg-pink {
-  background-color: #ffccd5;
+  background-color: #f7a8b8;
   color: #590d22;
 }
 
-/* HAR BIR BOSQICH BUTUN EKRANNI EGALLAYDI */
 .stage {
   position: absolute;
   top: 0;
@@ -42,7 +41,7 @@ body.bg-pink {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 20px;
+  padding: 40px 20px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -53,7 +52,6 @@ body.bg-pink {
   pointer-events: auto;
 }
 
-/* SARLAVHA */
 .subtitle {
   font-size: 22px;
   font-style: italic;
@@ -61,34 +59,45 @@ body.bg-pink {
   margin-top: 10px;
 }
 
-/* YURAKNI EKRAN MARKAZIGA ANIQ TEKISLASH */
-.heart-wrapper {
+/* 1-RASMDAGI KICHIK YURAKCHALARDAN TASHKIL TOPGAN KATTA YURAK CONTAINER */
+.heart-composite {
   position: absolute;
-  top: 48%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 220px;
-  height: 220px;
+  width: 280px;
+  height: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.4s ease;
 }
 
-.main-heart-svg {
+.composite-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
 }
 
-/* KAMON KO'RINISHI VA JOYLASHUVI */
+/* YURAKCHA BARGLARI CSS */
+.sub-heart {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: #ff0054;
+  clip-path: path(
+    "M 10,18 C 3,12 0,8 0,5 C 0,2 3,0 5,0 C 7,0 9,2 10,4 C 11,2 13,0 15,0 C 17,0 20,2 20,5 C 20,8 17,12 10,18 Z"
+  );
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* KAMON */
 .bow-wrapper {
   position: absolute;
-  bottom: 80px;
+  bottom: 70px;
   left: 8%;
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   cursor: pointer;
   z-index: 10;
 }
@@ -104,21 +113,21 @@ body.bg-pink {
   letter-spacing: 4px;
   opacity: 0.6;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-/* ZARRALAR (PORTLASH EFFEKTI) */
+/* ZARRALAR */
 .particle {
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   pointer-events: none;
   transition:
     transform 0.8s cubic-bezier(0.1, 0.8, 0.3, 1),
     opacity 0.8s ease;
 }
 
-/* 2-BOSQICH MATNLARI */
+/* 2-BOSQICH */
 #stage-2 {
   justify-content: center;
   text-align: center;
@@ -132,7 +141,7 @@ body.bg-pink {
 }
 
 .big-title {
-  font-size: 82px;
+  font-size: 80px;
   line-height: 1.05;
   font-weight: bold;
 }
@@ -143,19 +152,19 @@ body.bg-pink {
   opacity: 0.9;
 }
 
-/* 3-BOSQICH (DARAXT) */
+/* 3-BOSQICH (YURAKLI DARAXT) */
 #stage-3 {
   justify-content: space-between;
 }
 
 .tree-wrapper {
   width: 100%;
-  max-width: 420px;
-  height: 420px;
+  max-width: 480px;
+  height: 460px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .tree-svg {
@@ -165,17 +174,17 @@ body.bg-pink {
 
 .final-caption {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .final-caption h2 {
-  font-size: 52px;
+  font-size: 48px;
   color: #800f2f;
-  margin: 8px 0;
+  margin: 6px 0;
 }
 
 .small-text {
   font-size: 18px;
-  color: #a44a5e;
+  color: #800f2f;
   font-style: italic;
 }
