@@ -7,44 +7,44 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body id="app-body" class="bg-dark">
-    <!-- 1-BOSQICH: Qora fon, o'rta yurak va kamon -->
+    <!-- 1-BOSQICH: Kamon va Neon Yurak -->
     <section id="stage-1" class="stage active">
       <div class="subtitle">a little something, for you</div>
 
-      <!-- Markazdagi yurak -->
-      <div class="target-heart-wrapper">
+      <!-- Qoq markazdagi KATTA YURAK -->
+      <div class="heart-container">
         <div class="main-heart" id="mainHeart"></div>
       </div>
 
-      <!-- Kamon va O'q (Pastki chap tomonda) -->
+      <!-- Pastki chap burchakdagi KAMON -->
       <div class="bow-area" id="bowArea">
-        <svg viewBox="0 0 100 100" class="bow-svg">
+        <svg viewBox="0 0 120 120" class="bow-svg">
           <path
-            d="M 20,20 Q 50,50 20,80"
+            d="M 30,15 Q 80,60 30,105"
             fill="none"
             stroke="#ffffff"
-            stroke-width="4"
+            stroke-width="5"
             stroke-linecap="round"
           />
           <line
-            x1="20"
-            y1="20"
-            x2="20"
-            y2="80"
+            x1="30"
+            y1="15"
+            x2="30"
+            y2="105"
             stroke="#aaaaaa"
-            stroke-width="1.5"
+            stroke-width="2"
           />
           <g id="arrowGroup">
             <line
-              x1="10"
-              y1="50"
-              x2="65"
-              y2="50"
+              x1="15"
+              y1="60"
+              x2="80"
+              y2="60"
               stroke="#ff4d6d"
-              stroke-width="3.5"
+              stroke-width="4"
               stroke-linecap="round"
             />
-            <polygon points="65,44 78,50 65,56" fill="#ff4d6d" />
+            <polygon points="80,52 95,60 80,68" fill="#ff4d6d" />
           </g>
         </svg>
       </div>
@@ -52,34 +52,25 @@
       <div class="instruction">PULL & RELEASE</div>
     </section>
 
-    <!-- 2-BOSQICH: Qizil fon va 5 sekundlik yozuv -->
+    <!-- 2-BOSQICH: Qizil Fon va Matn -->
     <section id="stage-2" class="stage">
       <div class="wish-label">make a wish...</div>
       <h1 class="big-title">Happy<br />Birthday</h1>
       <div class="wish-sub">to someone worth celebrating</div>
     </section>
 
-    <!-- 3-BOSQICH: Pushti fon va Yurakli Daraxt -->
+    <!-- 3-BOSQICH: Pushti Fon va Yurakli Daraxt -->
     <section id="stage-3" class="stage">
       <div class="tree-wrapper">
-        <svg viewBox="0 0 200 240" class="tree-svg">
-          <!-- Daraxt tanasi -->
-          <path
-            d="M 100,230 Q 95,160 100,120 Q 90,100 70,80 M 100,120 Q 110,95 130,75 M 100,140 Q 80,120 60,110"
-            fill="none"
-            stroke="#4a2810"
-            stroke-width="5"
-            stroke-linecap="round"
-          />
-          <!-- Shoxlardagi yuraklar to'plami -->
-          <g fill="#ff4d6d">
-            <circle cx="100" cy="70" r="38" fill="#ff758f" opacity="0.8" />
-            <circle cx="75" cy="85" r="32" fill="#ff4d6d" opacity="0.85" />
-            <circle cx="125" cy="85" r="32" fill="#ff8fa3" opacity="0.85" />
-            <circle cx="100" cy="45" r="28" fill="#c9184a" opacity="0.9" />
-            <circle cx="60" cy="65" r="22" fill="#ffb3c1" />
-            <circle cx="140" cy="65" r="22" fill="#ff758f" />
+        <svg viewBox="0 0 300 350" class="tree-svg">
+          <g stroke="#3a1c0d" stroke-linecap="round" fill="none">
+            <path d="M 150,330 C 145,240 155,180 150,140" stroke-width="10" />
+            <path d="M 150,210 C 130,180 100,160 70,140" stroke-width="6" />
+            <path d="M 150,200 C 170,170 200,150 230,135" stroke-width="6" />
+            <path d="M 150,160 C 135,130 110,110 95,90" stroke-width="4" />
+            <path d="M 150,150 C 165,120 185,100 205,85" stroke-width="4" />
           </g>
+          <g id="treeLeaves"></g>
         </svg>
       </div>
 

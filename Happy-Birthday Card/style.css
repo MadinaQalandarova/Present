@@ -12,13 +12,12 @@ body {
   font-family: "Georgia", serif;
 }
 
-/* Fon ranglari almashinuvi body darajasida */
 body {
   transition: background-color 1s ease;
 }
 
 body.bg-dark {
-  background-color: #0f0f12;
+  background-color: #0c0c0e;
   color: #ffffff;
 }
 
@@ -32,7 +31,6 @@ body.bg-pink {
   color: #590d22;
 }
 
-/* Sahifa bosqichlari ekranni to'liq egallaydi */
 .stage {
   position: absolute;
   top: 0;
@@ -43,7 +41,7 @@ body.bg-pink {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 20px;
+  padding: 40px 20px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
@@ -54,41 +52,53 @@ body.bg-pink {
   pointer-events: auto;
 }
 
-/* 1-Bosqich */
+/* Sarlavha */
 .subtitle {
-  font-size: 18px;
+  font-size: 22px;
   font-style: italic;
-  opacity: 0.8;
+  opacity: 0.85;
+  margin-top: 10px;
 }
 
-.target-heart-wrapper {
-  flex: 1;
+/* YURAKNI EKRAN MARKAZIGA TEKISLASH */
+.heart-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .main-heart {
-  width: 100px;
-  height: 100px;
-  background: #ff4d6d;
-  clip-path: path(
-    "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #ff758f 0%,
+    #ff0054 70%,
+    #9e0031 100%
   );
-  transform: scale(4);
-  filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6));
+  clip-path: path(
+    "M 12,21.35 C 5.4,15.36 2,12.28 2,8.5 C 2,5.42 4.42,3 7.5,3 C 9.24,3 10.91,3.81 12,5.09 C 13.09,3.81 14.76,3 16.5,3 C 19.58,3 22,5.42 22,8.5 C 22,12.28 18.6,15.36 12,21.35 Z"
+  );
+  transform: scale(5);
+  filter: drop-shadow(0 0 40px rgba(255, 0, 84, 0.85));
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
 }
 
+/* KAMON KO'RINISHI */
 .bow-area {
   position: absolute;
-  bottom: 80px;
-  left: 10%;
-  width: 120px;
-  height: 120px;
+  bottom: 60px;
+  left: 5%;
+  width: 160px;
+  height: 160px;
   cursor: pointer;
+  z-index: 10;
 }
 
 .bow-svg {
@@ -99,19 +109,20 @@ body.bg-pink {
 
 .instruction {
   font-size: 13px;
-  letter-spacing: 3px;
-  opacity: 0.7;
+  letter-spacing: 4px;
+  opacity: 0.6;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
-/* Zarralar (Explosion) */
+/* ZARRALAR */
 .heart-particle {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  background: #ff758f;
+  width: 18px;
+  height: 18px;
+  background: #ff4d6d;
   clip-path: path(
-    "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+    "M 12,21.35 C 5.4,15.36 2,12.28 2,8.5 C 2,5.42 4.42,3 7.5,3 C 9.24,3 10.91,3.81 12,5.09 C 13.09,3.81 14.76,3 16.5,3 C 19.58,3 22,5.42 22,8.5 C 22,12.28 18.6,15.36 12,21.35 Z"
   );
   pointer-events: none;
   transition:
@@ -119,43 +130,44 @@ body.bg-pink {
     opacity 0.8s ease;
 }
 
-/* 2-Bosqich */
+/* 2-BOSQICH */
 #stage-2 {
   justify-content: center;
   text-align: center;
 }
 
 .wish-label {
-  font-size: 20px;
+  font-size: 24px;
   font-style: italic;
   margin-bottom: 20px;
   opacity: 0.9;
 }
 
 .big-title {
-  font-size: 64px;
-  line-height: 1.1;
+  font-size: 80px;
+  line-height: 1.05;
   font-weight: bold;
 }
 
 .wish-sub {
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 30px;
   opacity: 0.9;
 }
 
-/* 3-Bosqich */
+/* 3-BOSQICH */
 #stage-3 {
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .tree-wrapper {
   width: 100%;
-  max-width: 380px;
-  height: 380px;
+  max-width: 450px;
+  height: 420px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .tree-svg {
@@ -165,16 +177,17 @@ body.bg-pink {
 
 .final-caption {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .final-caption h2 {
-  font-size: 42px;
+  font-size: 48px;
   color: #800f2f;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .small-text {
-  font-size: 16px;
+  font-size: 18px;
   color: #a44a5e;
   font-style: italic;
 }
