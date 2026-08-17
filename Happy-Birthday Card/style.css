@@ -17,18 +17,18 @@ body {
 }
 
 body.bg-dark {
-  background-color: #0c0c0e;
+  background-color: #000000;
   color: #ffffff;
 }
 
 body.bg-red {
-  background-color: #a40e3a;
+  background-color: #ba1849;
   color: #ffffff;
 }
 
 /* 3-stage fondagi rasm rangi bilan bir xil qilindi */
 body.bg-pink {
-  background-color: #ffffff;
+  background-color: bisque;
   color: #800f2f;
 }
 
