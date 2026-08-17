@@ -4,187 +4,177 @@
   padding: 0;
 }
 
+html,
 body {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #121212;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   font-family: "Georgia", serif;
-  overflow: hidden;
 }
 
-/* Asosiy kartochka va Fon ranglari o'zgarishi */
-.card {
-  position: relative;
-  width: 360px;
-  height: 560px;
-  border-radius: 28px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  overflow: hidden;
-  transition:
-    background 1s ease,
-    color 1s ease;
+/* Fon ranglari almashinuvi body darajasida */
+body {
+  transition: background-color 1s ease;
+}
 
-  /* 1-BOSQICH FONI: Qora (Dark) */
-  background: #1a1a1a;
+body.bg-dark {
+  background-color: #0f0f12;
   color: #ffffff;
 }
 
-/* 2-BOSQICH FONI: Qizil (Red) */
-.card.bg-red {
-  background: #c9184a;
+body.bg-red {
+  background-color: #b7094c;
   color: #ffffff;
 }
 
-/* 3-BOSQICH FONI: Pushti (Pink) */
-.card.bg-pink {
-  background: radial-gradient(circle at center, #fff0f3 0%, #ffccd5 100%);
+body.bg-pink {
+  background-color: #ffccd5;
   color: #590d22;
 }
 
+/* Sahifa bosqichlari ekranni to'liq egallaydi */
 .stage {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 30px 20px;
-  transition: opacity 0.5s ease;
-}
-
-.hidden {
+  padding: 60px 20px;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.8s ease;
 }
 
-/* 1-Bosqich elementlari */
+.stage.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 1-Bosqich */
 .subtitle {
-  font-size: 14px;
-  opacity: 0.8;
+  font-size: 18px;
   font-style: italic;
+  opacity: 0.8;
 }
 
-.target-heart {
-  width: 60px;
-  height: 60px;
+.target-heart-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-heart {
+  width: 100px;
+  height: 100px;
   background: #ff4d6d;
   clip-path: path(
     "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
   );
-  transform: scale(2.5);
-  margin-top: 40px;
+  transform: scale(4);
+  filter: drop-shadow(0 0 20px rgba(255, 77, 109, 0.6));
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
 }
 
-.bow-container {
+.bow-area {
   position: absolute;
-  bottom: 60px;
-  left: 30px;
-  width: 80px;
-  height: 80px;
+  bottom: 80px;
+  left: 10%;
+  width: 120px;
+  height: 120px;
   cursor: pointer;
 }
 
 .bow-svg {
   width: 100%;
   height: 100%;
-  transform: rotate(-45deg);
+  transform: rotate(-35deg);
 }
 
-.hint {
-  font-size: 11px;
-  letter-spacing: 2px;
-  opacity: 0.6;
+.instruction {
+  font-size: 13px;
+  letter-spacing: 3px;
+  opacity: 0.7;
   text-transform: uppercase;
 }
 
-/* Zarralar (Yurak portlaganda) */
-.particle {
+/* Zarralar (Explosion) */
+.heart-particle {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   background: #ff758f;
   clip-path: path(
     "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
   );
   pointer-events: none;
   transition:
-    transform 0.8s ease-out,
-    opacity 0.8s ease-out;
+    transform 0.8s cubic-bezier(0.1, 0.8, 0.3, 1),
+    opacity 0.8s ease;
 }
 
-/* 2-Bosqich yozuvlari */
-#text-stage {
+/* 2-Bosqich */
+#stage-2 {
   justify-content: center;
   text-align: center;
 }
 
-.wish-text {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 10px;
+.wish-label {
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 20px;
+  opacity: 0.9;
 }
 
-.birthday-title {
-  font-size: 46px;
+.big-title {
+  font-size: 64px;
   line-height: 1.1;
   font-weight: bold;
 }
 
 .wish-sub {
-  font-size: 13px;
-  margin-top: 15px;
+  font-size: 16px;
+  margin-top: 30px;
   opacity: 0.9;
 }
 
-/* 3-Bosqich: Daraxt sahifasi */
-#tree-stage {
-  justify-content: space-between;
+/* 3-Bosqich */
+#stage-3 {
+  justify-content: space-around;
 }
 
-.tree-container {
+.tree-wrapper {
   width: 100%;
-  height: 280px;
+  max-width: 380px;
+  height: 380px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .tree-svg {
-  width: 220px;
-  height: 240px;
+  width: 100%;
+  height: 100%;
 }
 
-.final-text {
+.final-caption {
   text-align: center;
-  margin-bottom: 20px;
 }
 
-.and-make {
-  font-size: 12px;
+.final-caption h2 {
+  font-size: 42px;
+  color: #800f2f;
+  margin: 10px 0;
+}
+
+.small-text {
+  font-size: 16px;
   color: #a44a5e;
   font-style: italic;
-}
-
-.final-text h2 {
-  font-size: 32px;
-  color: #800f2f;
-  margin: 5px 0;
-}
-
-.blooms {
-  font-size: 12px;
-  color: #a44a5e;
 }

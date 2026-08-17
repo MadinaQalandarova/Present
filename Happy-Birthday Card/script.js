@@ -1,75 +1,69 @@
-const card = document.getElementById("card");
-const gameStage = document.getElementById("game-stage");
-const textStage = document.getElementById("text-stage");
-const treeStage = document.getElementById("tree-stage");
+const appBody = document.getElementById("app-body");
+const stage1 = document.getElementById("stage-1");
+const stage2 = document.getElementById("stage-2");
+const stage3 = document.getElementById("stage-3");
 
-const bowContainer = document.getElementById("bowContainer");
+const bowArea = document.getElementById("bowArea");
 const arrowGroup = document.getElementById("arrowGroup");
-const targetHeart = document.getElementById("targetHeart");
+const mainHeart = document.getElementById("mainHeart");
 
 let isFired = false;
 
-// Kamon ustiga bosilganda o'q otilishi
-bowContainer.addEventListener("click", () => {
+// Kamonga bosilganda harakat boshlanadi
+bowArea.addEventListener("click", () => {
   if (isFired) return;
   isFired = true;
 
-  // 1. O'qning yuqoriga - yurak tomon uchishi
+  // 1. O'q markazga uchib boradi
   arrowGroup.style.transition = "transform 0.4s ease-in";
-  arrowGroup.style.transform = "translate(120px, -220px)";
+  arrowGroup.style.transform = "translate(250px, -350px)";
 
   setTimeout(() => {
-    // 2. Yurakchani yo'q qilish va har tarafga sochish (Explosion)
-    explodeHeart();
+    // 2. Markazdagi yurak har tarafga sochilib ketadi
+    explodeMainHeart();
 
     setTimeout(() => {
-      // 3. Birinchi bosqichni yashirish va FONI QIZILGA O'ZGARTIRISH
-      gameStage.classList.add("hidden");
-      card.classList.add("bg-red");
-      textStage.classList.remove("hidden");
+      // 3. 1-bosqich yo'qolib, 2-bosqich boshlanadi (Fon: Qizil)
+      stage1.classList.remove("active");
+      appBody.className = "bg-red";
+      stage2.classList.add("active");
 
-      // 4. 5 sekund davomida "HAPPY BIRTHDAY" ko'rinishi
+      // 4. 2-bosqich roppa-rosa 5 sekund turadi
       setTimeout(() => {
-        // 5. Matn sahifasini yashirish va FONI PUSHTIGA O'ZGARTIRISH
-        textStage.classList.add("hidden");
-        card.classList.remove("bg-red");
-        card.classList.add("bg-pink");
-
-        // 6. Oxirgi bosqich: Yurakchali daraxt paydo bo'lishi
-        treeStage.classList.remove("hidden");
-      }, 5000); // Exact 5 seconds
-    }, 400);
+        // 5. 2-bosqich yo'qolib, 3-bosqich boshlanadi (Fon: Pushti)
+        stage2.classList.remove("active");
+        appBody.className = "bg-pink";
+        stage3.classList.add("active");
+      }, 5000); // 5 sekundilikk taymer
+    }, 500);
   }, 400);
 });
 
-// Yurak sochilib ketishi funksiyasi
-function explodeHeart() {
-  const rect = targetHeart.getBoundingClientRect();
-  const cardRect = card.getBoundingClientRect();
+// Yurakni mayda parchalarga bo'lib sochish funksiyasi
+function explodeMainHeart() {
+  const rect = mainHeart.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
 
-  const centerX = rect.left - cardRect.left + rect.width / 2;
-  const centerY = rect.top - cardRect.top + rect.height / 2;
+  mainHeart.style.opacity = "0";
 
-  targetHeart.style.opacity = "0";
-
-  // 15 ta kichik yurakcha zarralarini hosil qilish
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 24; i++) {
     const particle = document.createElement("div");
-    particle.classList.add("particle");
+    particle.classList.add("heart-particle");
 
     particle.style.left = `${centerX}px`;
     particle.style.top = `${centerY}px`;
 
-    card.appendChild(particle);
+    document.body.appendChild(particle);
 
     const angle = Math.random() * Math.PI * 2;
-    const distance = 60 + Math.random() * 80;
+    const distance = 100 + Math.random() * 150;
 
     const x = Math.cos(angle) * distance;
     const y = Math.sin(angle) * distance;
 
     requestAnimationFrame(() => {
-      particle.style.transform = `translate(${x}px, ${y}px) scale(${0.5 + Math.random()})`;
+      particle.style.transform = `translate(${x}px, ${y}px) scale(${0.6 + Math.random()})`;
       particle.style.opacity = "0";
     });
 

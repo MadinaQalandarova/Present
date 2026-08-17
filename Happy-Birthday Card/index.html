@@ -3,98 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Birthday Card</title>
+    <title>Interactive Birthday Scene</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <!-- Asosiy konteyner -->
-    <div class="card" id="card">
-      <!-- 1 va 2-bosqich: Yurak, Kamon va O'q -->
-      <div id="game-stage" class="stage">
-        <div class="subtitle">a little something, for you</div>
+  <body id="app-body" class="bg-dark">
+    <!-- 1-BOSQICH: Qora fon, o'rta yurak va kamon -->
+    <section id="stage-1" class="stage active">
+      <div class="subtitle">a little something, for you</div>
 
-        <!-- Markazdagi yurak -->
-        <div class="target-heart" id="targetHeart"></div>
+      <!-- Markazdagi yurak -->
+      <div class="target-heart-wrapper">
+        <div class="main-heart" id="mainHeart"></div>
+      </div>
 
-        <!-- Kamon va O'q SVG -->
-        <div class="bow-container" id="bowContainer">
-          <svg viewBox="0 0 100 100" class="bow-svg">
-            <!-- Kamon yog'ochi -->
-            <path
-              d="M 20,20 Q 50,50 20,80"
-              fill="none"
-              stroke="#222"
-              stroke-width="4"
-              stroke-linecap="round"
-            />
-            <!-- Kamon ipi -->
+      <!-- Kamon va O'q (Pastki chap tomonda) -->
+      <div class="bow-area" id="bowArea">
+        <svg viewBox="0 0 100 100" class="bow-svg">
+          <path
+            d="M 20,20 Q 50,50 20,80"
+            fill="none"
+            stroke="#ffffff"
+            stroke-width="4"
+            stroke-linecap="round"
+          />
+          <line
+            x1="20"
+            y1="20"
+            x2="20"
+            y2="80"
+            stroke="#aaaaaa"
+            stroke-width="1.5"
+          />
+          <g id="arrowGroup">
             <line
-              x1="20"
-              y1="20"
-              x2="20"
-              y2="80"
-              stroke="#888"
-              stroke-width="1.5"
-              id="stringLine"
-            />
-            <!-- O'q -->
-            <g id="arrowGroup">
-              <line
-                x1="10"
-                y1="50"
-                x2="60"
-                y2="50"
-                stroke="#d62828"
-                stroke-width="3"
-                stroke-linecap="round"
-              />
-              <polygon points="60,45 70,50 60,55" fill="#d62828" />
-            </g>
-          </svg>
-        </div>
-
-        <div class="hint" id="hintText">PULL & RELEASE</div>
-      </div>
-
-      <!-- 3-bosqich: 5 sekundlik Happy Birthday yozuvi -->
-      <div id="text-stage" class="stage hidden">
-        <div class="wish-text">make a wish...</div>
-        <h1 class="birthday-title">Happy<br />Birthday</h1>
-        <div class="wish-sub">to someone worth celebrating</div>
-      </div>
-
-      <!-- 4-bosqich: Oxirgi rasmdagi Yurakchali Daraxt -->
-      <div id="tree-stage" class="stage hidden">
-        <div class="tree-container">
-          <!-- SVG orqali chizilgan yurak-daraxt -->
-          <svg viewBox="0 0 200 240" class="tree-svg">
-            <!-- Daraxt tanasi -->
-            <path
-              d="M 100,230 Q 95,160 100,120 Q 90,100 70,80 M 100,120 Q 110,95 130,75 M 100,140 Q 80,120 60,110"
-              fill="none"
-              stroke="#4a2810"
-              stroke-width="6"
+              x1="10"
+              y1="50"
+              x2="65"
+              y2="50"
+              stroke="#ff4d6d"
+              stroke-width="3.5"
               stroke-linecap="round"
             />
-
-            <!-- Daraxt shoxlaridagi kichik yurakchalar to'plami -->
-            <g fill="#ff4d6d">
-              <circle cx="100" cy="70" r="35" fill="#ff758f" opacity="0.6" />
-              <circle cx="80" cy="80" r="30" fill="#ff4d6d" opacity="0.7" />
-              <circle cx="120" cy="80" r="30" fill="#ff8fa3" opacity="0.7" />
-              <circle cx="100" cy="50" r="25" fill="#c9184a" opacity="0.8" />
-              <circle cx="65" cy="65" r="20" fill="#ffb3c1" opacity="0.9" />
-              <circle cx="135" cy="65" r="20" fill="#ff758f" opacity="0.9" />
-            </g>
-          </svg>
-        </div>
-        <div class="final-text">
-          <p class="and-make">and... make it count</p>
-          <h2>Happy Birthday</h2>
-          <p class="blooms">here's to a year that blooms</p>
-        </div>
+            <polygon points="65,44 78,50 65,56" fill="#ff4d6d" />
+          </g>
+        </svg>
       </div>
-    </div>
+
+      <div class="instruction">PULL & RELEASE</div>
+    </section>
+
+    <!-- 2-BOSQICH: Qizil fon va 5 sekundlik yozuv -->
+    <section id="stage-2" class="stage">
+      <div class="wish-label">make a wish...</div>
+      <h1 class="big-title">Happy<br />Birthday</h1>
+      <div class="wish-sub">to someone worth celebrating</div>
+    </section>
+
+    <!-- 3-BOSQICH: Pushti fon va Yurakli Daraxt -->
+    <section id="stage-3" class="stage">
+      <div class="tree-wrapper">
+        <svg viewBox="0 0 200 240" class="tree-svg">
+          <!-- Daraxt tanasi -->
+          <path
+            d="M 100,230 Q 95,160 100,120 Q 90,100 70,80 M 100,120 Q 110,95 130,75 M 100,140 Q 80,120 60,110"
+            fill="none"
+            stroke="#4a2810"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <!-- Shoxlardagi yuraklar to'plami -->
+          <g fill="#ff4d6d">
+            <circle cx="100" cy="70" r="38" fill="#ff758f" opacity="0.8" />
+            <circle cx="75" cy="85" r="32" fill="#ff4d6d" opacity="0.85" />
+            <circle cx="125" cy="85" r="32" fill="#ff8fa3" opacity="0.85" />
+            <circle cx="100" cy="45" r="28" fill="#c9184a" opacity="0.9" />
+            <circle cx="60" cy="65" r="22" fill="#ffb3c1" />
+            <circle cx="140" cy="65" r="22" fill="#ff758f" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="final-caption">
+        <p class="small-text">and... make it count</p>
+        <h2>Happy Birthday</h2>
+        <p class="small-text">here's to a year that blooms</p>
+      </div>
+    </section>
 
     <script src="script.js"></script>
   </body>
