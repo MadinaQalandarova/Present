@@ -59,36 +59,35 @@ body.bg-pink {
   margin-top: 10px;
 }
 
-/* 1-RASMDAGI KICHIK YURAKCHALARDAN TASHKIL TOPGAN KATTA YURAK CONTAINER */
-.heart-composite {
+/* YURAKCHALAR TEPADAN TUSHIB BIRLASHADIGAN MAYDON */
+.heart-assembly-area {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 280px;
-  height: 280px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 260px;
+  height: 260px;
   transition: opacity 0.4s ease;
 }
 
-.composite-inner {
+#assemblyContainer {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* YURAKCHA BARGLARI CSS */
-.sub-heart {
+.falling-heart {
   position: absolute;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   background: #ff0054;
   clip-path: path(
     "M 10,18 C 3,12 0,8 0,5 C 0,2 3,0 5,0 C 7,0 9,2 10,4 C 11,2 13,0 15,0 C 17,0 20,2 20,5 C 20,8 17,12 10,18 Z"
   );
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition:
+    transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.8s ease;
 }
 
 /* KAMON */
@@ -116,7 +115,7 @@ body.bg-pink {
   margin-bottom: 15px;
 }
 
-/* ZARRALAR */
+/* PORTLASH ZARRALARI */
 .particle {
   position: absolute;
   width: 16px;
@@ -152,24 +151,25 @@ body.bg-pink {
   opacity: 0.9;
 }
 
-/* 3-BOSQICH (YURAKLI DARAXT) */
-#stage-3 {
+/* 3-BOSQICH: RASMLI DARAXT */
+.tree-stage {
   justify-content: space-between;
 }
 
-.tree-wrapper {
+.tree-image-container {
   width: 100%;
-  max-width: 480px;
-  height: 460px;
+  max-width: 420px;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
 
-.tree-svg {
-  width: 100%;
-  height: 100%;
+.tree-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .final-caption {
