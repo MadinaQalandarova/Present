@@ -9,10 +9,12 @@ const mainHeart = document.getElementById("mainHeart");
 
 let isFired = false;
 
-// TEPADAN YURAKCHALAR TUSHIB BIRLASHISH ANIMATSIYASI
+// TEPADAN YURAKCHALAR TUSHIB IDEAL YURAK SHAKLINI HOSIL QILISH
 function animateFallingHeartAssembly() {
   const container = document.getElementById("assemblyContainer");
   if (!container) return;
+
+  container.innerHTML = "";
 
   const colors = [
     "#ff0054",
@@ -22,46 +24,53 @@ function animateFallingHeartAssembly() {
     "#ff4d6d",
     "#800f2f",
   ];
-  const totalHearts = 180;
+  const totalHearts = 220;
+
+  // Maydon o'lchamiga nisbatan markazni hisoblash
+  const rect = container.getBoundingClientRect();
+  const centerX = (rect.width || 260) / 2;
+  const centerY = (rect.height || 260) / 2;
+  const scaleFactor = (rect.width || 260) / 32;
 
   for (let i = 0; i < totalHearts; i++) {
     const t = Math.random() * Math.PI * 2;
-    const r = Math.sqrt(Math.random());
+    // Tashqi chegara va ichki qatlamlarni ideal taqsimlash
+    const r = i < 80 ? 1 : Math.sqrt(Math.random());
 
-    // Yurak shakli koordinatasi (Target)
-    let targetX = 16 * Math.pow(Math.sin(t), 3);
-    let targetY = -(
+    let x = 16 * Math.pow(Math.sin(t), 3);
+    let y = -(
       13 * Math.cos(t) -
       5 * Math.cos(2 * t) -
       2 * Math.cos(3 * t) -
       Math.cos(4 * t)
     );
 
-    targetX = 130 + targetX * r * 6.5;
-    targetY = 120 + targetY * r * 6.5;
+    const targetX = centerX + x * r * (scaleFactor * 0.45) - 10;
+    const targetY = centerY + y * r * (scaleFactor * 0.45) - 10;
 
-    // Boshlang'ich joylashuv (Tepadan ekrandan tashqarida)
-    const startX = targetX + (Math.random() - 0.5) * 300;
-    const startY = -200 - Math.random() * 300;
+    // Boshlang'ich joylashuv (Tepadan tushishi uchun)
+    const startX = targetX + (Math.random() - 0.5) * 250;
+    const startY = -250 - Math.random() * 300;
 
     const heart = document.createElement("div");
     heart.classList.add("falling-heart");
     heart.style.background = colors[Math.floor(Math.random() * colors.length)];
 
-    // Dastlab tepada turadi
-    heart.style.transform = `translate(${startX}px, ${startY}px) scale(0.5) rotate(${Math.random() * 360}deg)`;
+    heart.style.transform = `translate(${startX}px, ${startY}px) scale(0.4) rotate(${Math.random() * 360}deg)`;
     container.appendChild(heart);
 
-    // Kichik kechikish bilan barchasi o'z o'rniga tushadi
-    const delay = i * 12; // ketma-ket yog'ilishi uchun
+    const delay = i * 10;
     setTimeout(() => {
       heart.style.opacity = "1";
-      heart.style.transform = `translate(${targetX}px, ${targetY}px) scale(${0.6 + Math.random() * 0.5}) rotate(${(Math.random() - 0.5) * 30}deg)`;
+      heart.style.transform = `translate(${targetX}px, ${targetY}px) scale(${0.55 + Math.random() * 0.4}) rotate(${(Math.random() - 0.5) * 25}deg)`;
     }, delay);
   }
 }
 
-animateFallingHeartAssembly();
+// O'lcham o'zgarganda qayta hisoblash uchun
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(animateFallingHeartAssembly, 100);
+});
 
 // KAMONDAN O'Q OTILISHI
 bowWrapper.addEventListener("click", () => {
