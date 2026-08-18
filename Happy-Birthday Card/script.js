@@ -8,6 +8,7 @@ const arrowGroup = document.getElementById("arrowGroup");
 const mainHeart = document.getElementById("mainHeart");
 
 let isFired = false;
+let resizeTimer;
 
 // TEPADAN YURAKCHALAR TUSHIB IDEAL YURAK SHAKLINI HOSIL QILISH
 function animateFallingHeartAssembly() {
@@ -54,7 +55,8 @@ function animateFallingHeartAssembly() {
 
     const heart = document.createElement("div");
     heart.classList.add("falling-heart");
-    heart.style.background = colors[Math.floor(Math.random() * colors.length)];
+    heart.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
 
     heart.style.transform = `translate(${startX}px, ${startY}px) scale(0.4) rotate(${Math.random() * 360}deg)`;
     container.appendChild(heart);
@@ -72,30 +74,56 @@ window.addEventListener("DOMContentLoaded", () => {
   setTimeout(animateFallingHeartAssembly, 100);
 });
 
+window.addEventListener("resize", () => {
+  if (isFired) return;
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(animateFallingHeartAssembly, 150);
+});
+
+// O'QNI YURAK MARKAZIGA YO'NALTIRISH (ekran o'lchamidan qat'iy nazar)
+function shootArrow() {
+  const bowRect = bowWrapper.getBoundingClientRect();
+  const heartRect = mainHeart.getBoundingClientRect();
+
+  const dx =
+    heartRect.left + heartRect.width / 2 - (bowRect.left + bowRect.width / 2);
+  const dy =
+    heartRect.top + heartRect.height / 2 - (bowRect.top + bowRect.height / 2);
+
+  // SVG viewBox 100x100 -> mashtab
+  const scale = bowRect.width / 100;
+  // .bow-svg -30deg aylantirilgan, shuning uchun hisobni teskarisiga olib boramiz
+  const rad = (30 * Math.PI) / 180;
+  const tx = (Math.cos(rad) * dx - Math.sin(rad) * dy) / scale + 9;
+  const ty = (Math.sin(rad) * dx + Math.cos(rad) * dy) / scale;
+
+  arrowGroup.style.transition =
+    "transform 0.45s cubic-bezier(0.2, 0.8, 0.4, 1)";
+  arrowGroup.style.transform = `translate(${tx}px, ${ty}px)`;
+}
+
 // KAMONDAN O'Q OTILISHI
 bowWrapper.addEventListener("click", () => {
   if (isFired) return;
   isFired = true;
 
-  arrowGroup.style.transition =
-    "transform 0.45s cubic-bezier(0.2, 0.8, 0.4, 1)";
-  arrowGroup.style.transform = "translate(35vw, -35vh)";
+  shootArrow();
 
+  // O'q yetib borgach (0.45s) yurak portlaydi
+  setTimeout(explodeHeart, 450);
+
+  // Portlashdan so'ng 2-bosqichga o'tamiz
   setTimeout(() => {
-    explodeHeart();
+    stage1.classList.remove("active");
+    appBody.className = "bg-red";
+    stage2.classList.add("active");
 
     setTimeout(() => {
-      stage1.classList.remove("active");
-      appBody.className = "bg-red";
-      stage2.classList.add("active");
-
-      setTimeout(() => {
-        stage2.classList.remove("active");
-        appBody.className = "bg-pink";
-        stage3.classList.add("active");
-      }, 5000);
-    }, 450);
-  }, 400);
+      stage2.classList.remove("active");
+      appBody.className = "bg-pink";
+      stage3.classList.add("active");
+    }, 5000);
+  }, 900);
 });
 
 // PORTLASH EFFEKTI

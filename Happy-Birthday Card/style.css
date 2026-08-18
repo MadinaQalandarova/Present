@@ -82,10 +82,15 @@ body.bg-pink {
   position: absolute;
   width: clamp(14px, 3.5vw, 20px);
   height: clamp(14px, 3.5vw, 20px);
-  background: #ff0054;
-  clip-path: path(
-    "M 10,18 C 3,12 0,8 0,5 C 0,2 3,0 5,0 C 7,0 9,2 10,4 C 11,2 13,0 15,0 C 17,0 20,2 20,5 C 20,8 17,12 10,18 Z"
-  );
+  background-color: #ff0054;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10,18 C3,12 0,8 0,5 C0,2 3,0 5,0 C7,0 9,2 10,4 C11,2 13,0 15,0 C17,0 20,2 20,5 C20,8 17,12 10,18 Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10,18 C3,12 0,8 0,5 C0,2 3,0 5,0 C7,0 9,2 10,4 C11,2 13,0 15,0 C17,0 20,2 20,5 C20,8 17,12 10,18 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
   opacity: 0;
   transition:
     transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
@@ -161,7 +166,7 @@ body.bg-pink {
 .tree-image-container {
   width: 100%;
   max-width: 420px;
-  height: 55vh;
+  height: clamp(200px, 55vh, 460px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -199,5 +204,8 @@ body.bg-pink {
   .bow-wrapper {
     left: 2%;
     bottom: 6vh;
+  }
+  .final-caption {
+    margin-bottom: 10px;
   }
 }
