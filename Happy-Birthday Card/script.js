@@ -6,6 +6,7 @@ const stage3 = document.getElementById("stage-3");
 const bowWrapper = document.getElementById("bowWrapper");
 const arrowGroup = document.getElementById("arrowGroup");
 const mainHeart = document.getElementById("mainHeart");
+const replayBtn = document.getElementById("replayBtn");
 
 let isFired = false;
 let resizeTimer;
@@ -125,6 +126,24 @@ bowWrapper.addEventListener("click", () => {
     }, 5000);
   }, 900);
 });
+
+// QAYTA BOSHLASH
+function replay() {
+  isFired = false;
+  clearTimeout(resizeTimer);
+
+  arrowGroup.style.transition = "none";
+  arrowGroup.style.transform = "";
+  mainHeart.style.opacity = "1";
+
+  stage3.classList.remove("active");
+  stage1.classList.add("active");
+  appBody.className = "bg-dark";
+
+  setTimeout(animateFallingHeartAssembly, 100);
+}
+
+replayBtn.addEventListener("click", replay);
 
 // PORTLASH EFFEKTI
 function explodeHeart() {
